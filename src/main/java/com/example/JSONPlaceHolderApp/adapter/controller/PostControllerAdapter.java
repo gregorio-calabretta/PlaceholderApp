@@ -22,10 +22,9 @@ private final PostService postService;
 
 
     @GetMapping(path = "{postId}")
-    public ResponseEntity<DtoResponsePost> getAPost(@PathVariable ("postId") Integer id) throws ResourceNotFoundException {
+    public ResponseEntity<DtoResponsePost> getAPost(@PathVariable ("postId") Integer id) throws Exception {
         DtoResponsePost dtoResponsePost = postService.getPostById(id);
         return ResponseEntity.status(HttpStatus.OK).body(dtoResponsePost);
-
     }
     @GetMapping
     public ResponseEntity<List<DtoResponsePost>> getAllPosts(){
@@ -41,8 +40,8 @@ private final PostService postService;
 
     @PutMapping
     public ResponseEntity<DtoResponsePost> updatePost(@RequestBody DtoRequestPost dtoRequestPost) throws ResourceNotFoundException {
-        DtoResponsePost dtoResponsePost = postService.updatePost(dtoRequestPost);
-        return ResponseEntity.status(HttpStatus.OK).body(dtoResponsePost);
+        postService.updatePost(dtoRequestPost);
+        return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 
     @DeleteMapping(path = "{postId}")
@@ -50,6 +49,7 @@ private final PostService postService;
     postService.deletePost(id);
     return ResponseEntity.status(HttpStatus.OK).body(null);
     }
+
 
 
 }

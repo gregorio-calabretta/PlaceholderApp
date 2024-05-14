@@ -13,7 +13,7 @@ public interface PostService {
     List<DtoResponsePost> getAllPosts();
     DtoResponsePost createPost(DtoRequestPost dtoRequestPost);
 
-    DtoResponsePost updatePost(DtoRequestPost dtoRequestPost) throws ResourceNotFoundException;
+    void updatePost(DtoRequestPost dtoRequestPost) throws ResourceNotFoundException;
 
     void deletePost(Integer id);
 }
